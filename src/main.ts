@@ -5,6 +5,8 @@ import tailwindLogo from '/tailwindcss-mark.svg'
 import typeScriptLogo from '/typescript.svg'
 import cuLogo from '/cu-logo.svg'
 
+
+
 async function loadOpenDay() {
   // Use the correct base path for GitHub Pages
   const base = import.meta.env.BASE_URL || '/';
@@ -19,6 +21,14 @@ function renderOpenDay(data: any) {
     app.innerHTML = '<p class="text-red-600">No Open Day data found.</p>'
     return
   }
+
+
+function filterResults(data: any){
+
+
+
+}
+
   app.innerHTML = `
     <div class="demo-banner w-full bg-yellow-300 text-black flex flex-col sm:flex-row items-center justify-between px-4 py-2 mb-6 gap-2 border-b-2 border-yellow-500">
       <div class="font-bold text-lg flex-1 text-center sm:text-left">This is a demo app</div>
@@ -35,6 +45,7 @@ function renderOpenDay(data: any) {
       </div>
     </div>
 
+    
     <div class="min-h-screen bg-cardiff-white font-sans py-6">
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
         <a href="https://www.cardiff.ac.uk/" target="_blank" rel="noopener noreferrer">
@@ -58,6 +69,9 @@ function renderOpenDay(data: any) {
             <img src="${topic.cover_image || cuLogo}" alt="${topic.name}" class="h-32 w-full object-cover rounded mb-4" />
             <h2 class="text-xl font-bold text-cardiff-white mb-2">${topic.name}</h2>
             <p class="text-cardiff-white mb-2">${topic.description || ''}</p>
+            <button type = "button" onclick = localStorage.setItem('Subject', ${topic})> Show Event Info </button>
+
+            
            <!-- ${topic.programs && topic.programs.length ? `
               <div class="mt-2">
                 <h3 class="font-semibold text-cardiff-dark mb-1">Events:</h3>
@@ -70,6 +84,8 @@ function renderOpenDay(data: any) {
         ` : '').join('')}
       </div>
     </div>
+
+    
   `
 }
 
