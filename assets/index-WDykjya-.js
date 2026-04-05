@@ -24,10 +24,15 @@
         <img src = https://cardiff.imgix.net/__data/assets/image/0007/1380454/main-building-open-day.jpg?w=800%5Cu0026fit=crop%5Cu0026q=60%5Cu0026auto=format" alt= "Cardiff University Main Building" class = "h-32 w-full object-cover rounded mb-4">
       </a>
       <div class="bg-cardiff-red px-0 py-6">
+      <div class = "customwidth">
       <h1 class="text-3xl sm:text-5xl px-2 font-bold text-cardiff-white mb-8 text-left">Cardiff University Open Day</h1>
       </div>
+      </div>
+      
       <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 py-6 px-2 ">
+      
         ${a.topics.map(t=>t&&t.name?`
+          
           <div class="bg-cardiff-red rounded-lg shadow p-6 flex flex-col">
             <img src="${t.cover_image||o}" alt="${t.name}" class="h-32 w-full object-cover rounded mb-4" />
             <h2 class="text-xl font-bold text-cardiff-white mb-2">${t.name}</h2>
