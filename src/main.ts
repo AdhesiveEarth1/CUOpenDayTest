@@ -59,6 +59,16 @@ function renderFilterUI() {
   `;
 }
 
+function renderBackUI() {
+  return `
+    <div class="filter-container mb-6">
+      <button id="backButton">Back</button>
+    </div>
+  `;
+}
+
+
+
 // Render the grid of topics
 function renderTopics(topics: any) {
   return `
@@ -111,11 +121,52 @@ function renderOpenDay(data: any) {
     const letter = (document.getElementById("mySelect") as HTMLSelectElement).value;
     
 
-    const filteredData = filterResults(data, letter).then();
+    const filteredData = filterResults(data, letter);
    
     
-    renderOpenDay({ topics: filteredData }); // Re-render with filtered data
+    renderFilterOpenDay({ topics: filteredData }); // Re-render with filtered data
   });
+
+
+
 }
+
+function renderFilterOpenDay(data: any) {
+  const app = document.querySelector<HTMLDivElement>('#app')!;
+  if (!data || !data.topics || data.topics.length === 0) {
+    alert("No open day data matching your criteria found")
+    //app.innerHTML = '<p class="text-red-600">No Open Day data found.</p>';
+    return;
+  }
+
+  // Render the full content (header + filter UI + topics)
+  app.innerHTML = `
+    ${renderHeader()}
+    ${renderBackUI()}
+    <div class="min-h-screen bg-cardiff-white font-sans py-6">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+        <a href="https://www.cardiff.ac.uk/" target="_blank" rel="noopener noreferrer">
+          <img src="${cuLogo}" alt="Cardiff University Logo" class="h-16 w-auto" />
+        </a>
+      </div>
+      <a>
+        <img src="https://cardiff.imgix.net/__data/assets/image/0007/1380454/main-building-open-day.jpg?w=800%5Cu0026fit=crop%5Cu0026q=60%5Cu0026auto=format" alt="Cardiff University Main Building" class="h-32 w-full object-cover rounded mb-4">
+      </a>
+      <div class="bg-cardiff-red px-0 py-6">
+        <div class="customwidth">
+          <h1 class="text-3xl sm:text-5xl px-2 font-bold text-cardiff-white mb-8 text-left">Cardiff University Open Day</h1>
+        </div>
+      </div>
+      ${renderTopics(data.topics)}
+    </div>
+  `;
+
+    document.getElementById("backButton")?.addEventListener("click", () => {
+    window.location.reload()
+  });
+
+}
+
+
 
 loadOpenDay().then(renderOpenDay);
