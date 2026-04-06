@@ -15,19 +15,36 @@ async function loadOpenDay() {
   return data
 }
 
+function filterResults(data: any, letter: string){
+const filtered_data = [];
+for (var topic of data){
+  if (data.topics.map((topic: any) => topic && topic.name)){
+      if (topic.name.charAt(0) == letter){
+        filtered_data.push(topic);
+
+
+      }
+
+  }
+
+  renderOpenDay(filterResults)
+  return
+}
+
+
+
+
+
+}
+
+
+
 function renderOpenDay(data: any) {
   const app = document.querySelector<HTMLDivElement>('#app')!
   if (!data.topics) {
     app.innerHTML = '<p class="text-red-600">No Open Day data found.</p>'
     return
   }
-
-
-function filterResults(data: any){
-
-
-
-}
 
   app.innerHTML = `
     <div class="demo-banner w-full bg-yellow-300 text-black flex flex-col sm:flex-row items-center justify-between px-4 py-2 mb-6 gap-2 border-b-2 border-yellow-500">
@@ -44,6 +61,17 @@ function filterResults(data: any){
         </a>
       </div>
     </div>
+
+
+    
+
+
+    <select id="mySelect">
+      <option value="A">A</option>
+      <option value="B">B</option>
+      <option value="C">C</option>
+    </select>
+    <button onclick="filterSubjects()">Filter</button>
 
     
     <div class="min-h-screen bg-cardiff-white font-sans py-6">
