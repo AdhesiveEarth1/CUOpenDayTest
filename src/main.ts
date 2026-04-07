@@ -48,13 +48,41 @@ function renderHeader() {
 // Render the filtering UI
 function renderFilterUI() {
   return `
-    <div class="filter-container mb-6">
+    <div class="filter-container mb-6 py-6">
+    <div class = "text-cardiff-dark">
+    <p>Select Starting Letter to Filter By</p>
+    </div>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
       <select id="mySelect">
         <option value="A">A</option>
         <option value="B">B</option>
         <option value="C">C</option>
+        <option value="D">D</option>
+        <option value="E">E</option>
+        <option value="F">F</option>
+        <option value="G">G</option>
+        <option value="H">H</option>
+        <option value="I">I</option>
+        <option value="J">J</option>
+        <option value="K">K</option>
+        <option value="L">L</option>
+        <option value="M">M</option>
+        <option value="N">N</option>
+        <option value="O">O</option>
+        <option value="P">P</option>
+        <option value="Q">Q</option>
+        <option value="R">R</option>
+        <option value="S">S</option>
+        <option value="T">T</option>
+        <option value="U">U</option>
+        <option value="V">V</option>
+        <option value="W">W</option>
+        <option value="X">X</option>
+        <option value="Y">Y</option>
+        <option value="Z">Z</option>
       </select>
       <button id="filterButton">Filter</button>
+      </div>
     </div>
   `;
 }
@@ -72,7 +100,7 @@ function renderBackUI() {
 // Render the grid of topics
 function renderTopics(topics: any) {
   return `
-    <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 py-6 px-2">
+    <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3  px-2">
       ${topics.map((topic: any) => `
         <div class="bg-cardiff-red rounded-lg shadow p-6 flex flex-col">
           <img src="${topic.cover_image || cuLogo}" alt="${topic.name}" class="h-32 w-full object-cover rounded mb-4" />
@@ -97,21 +125,24 @@ function renderOpenDay(data: any) {
   // Render the full content (header + filter UI + topics)
   app.innerHTML = `
     ${renderHeader()}
-    ${renderFilterUI()}
+    
     <div class="min-h-screen bg-cardiff-white font-sans py-6">
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
         <a href="https://www.cardiff.ac.uk/" target="_blank" rel="noopener noreferrer">
           <img src="${cuLogo}" alt="Cardiff University Logo" class="h-16 w-auto" />
-        </a>
+        </a>  
       </div>
       <a>
         <img src="https://cardiff.imgix.net/__data/assets/image/0007/1380454/main-building-open-day.jpg?w=800%5Cu0026fit=crop%5Cu0026q=60%5Cu0026auto=format" alt="Cardiff University Main Building" class="h-32 w-full object-cover rounded mb-4">
       </a>
       <div class="bg-cardiff-red px-0 py-6">
         <div class="customwidth">
-          <h1 class="text-3xl sm:text-5xl px-2 font-bold text-cardiff-white mb-8 text-left">Cardiff University Open Day</h1>
+          <h1 class="text-3xl sm:text-5xl px-2 font-bold text-cardiff-white  text-left">Cardiff University Open Day</h1>
         </div>
       </div>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+       ${renderFilterUI()}
+       </div>
       ${renderTopics(data.topics)}
     </div>
   `;
@@ -142,21 +173,24 @@ function renderFilterOpenDay(data: any) {
   // Render the full content (header + filter UI + topics)
   app.innerHTML = `
     ${renderHeader()}
-    ${renderBackUI()}
+    
     <div class="min-h-screen bg-cardiff-white font-sans py-6">
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
         <a href="https://www.cardiff.ac.uk/" target="_blank" rel="noopener noreferrer">
           <img src="${cuLogo}" alt="Cardiff University Logo" class="h-16 w-auto" />
-        </a>
+        </a>  
       </div>
       <a>
         <img src="https://cardiff.imgix.net/__data/assets/image/0007/1380454/main-building-open-day.jpg?w=800%5Cu0026fit=crop%5Cu0026q=60%5Cu0026auto=format" alt="Cardiff University Main Building" class="h-32 w-full object-cover rounded mb-4">
       </a>
       <div class="bg-cardiff-red px-0 py-6">
         <div class="customwidth">
-          <h1 class="text-3xl sm:text-5xl px-2 font-bold text-cardiff-white mb-8 text-left">Cardiff University Open Day</h1>
+          <h1 class="text-3xl sm:text-5xl px-2 font-bold text-cardiff-white  text-left">Cardiff University Open Day</h1>
         </div>
       </div>
+        <div class="flex flex-col sm:flex-row items-center justify-left gap-4 py-6 mb-6">
+       ${renderBackUI()}
+       </div>
       ${renderTopics(data.topics)}
     </div>
   `;
