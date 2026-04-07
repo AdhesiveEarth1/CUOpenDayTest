@@ -1,9 +1,9 @@
-(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))o(e);new MutationObserver(e=>{for(const a of e)if(a.type==="childList")for(const s of a.addedNodes)s.tagName==="LINK"&&s.rel==="modulepreload"&&o(s)}).observe(document,{childList:!0,subtree:!0});function n(e){const a={};return e.integrity&&(a.integrity=e.integrity),e.referrerPolicy&&(a.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?a.credentials="include":e.crossOrigin==="anonymous"?a.credentials="omit":a.credentials="same-origin",a}function o(e){if(e.ep)return;e.ep=!0;const a=n(e);fetch(e.href,a)}})();const c="/CUOpenDayTest/vite.svg",f="/CUOpenDayTest/tailwindcss-mark.svg",p="/CUOpenDayTest/typescript.svg",r="/CUOpenDayTest/cu-logo.svg";async function m(){return await(await fetch("/CUOpenDayTest/api/OpenDay.json")).json()}function u(i,t){return i.topics.filter(o=>o.name&&o.name.charAt(0).toUpperCase()===t.toUpperCase())}function l(){return`
+(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))o(e);new MutationObserver(e=>{for(const a of e)if(a.type==="childList")for(const s of a.addedNodes)s.tagName==="LINK"&&s.rel==="modulepreload"&&o(s)}).observe(document,{childList:!0,subtree:!0});function n(e){const a={};return e.integrity&&(a.integrity=e.integrity),e.referrerPolicy&&(a.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?a.credentials="include":e.crossOrigin==="anonymous"?a.credentials="omit":a.credentials="same-origin",a}function o(e){if(e.ep)return;e.ep=!0;const a=n(e);fetch(e.href,a)}})();const d="/CUOpenDayTest/vite.svg",f="/CUOpenDayTest/tailwindcss-mark.svg",p="/CUOpenDayTest/typescript.svg",r="/CUOpenDayTest/cu-logo.svg";async function m(){return await(await fetch("/CUOpenDayTest/api/OpenDay.json")).json()}function u(i,t){return i.topics.filter(o=>o.name&&o.name.charAt(0).toUpperCase()===t.toUpperCase())}function l(){return`
     <div class="demo-banner w-full bg-yellow-300 text-black flex flex-col sm:flex-row items-center justify-between px-4 py-2 mb-6 gap-2 border-b-2 border-yellow-500">
       <div class="font-bold text-lg flex-1 text-center sm:text-left">This is a demo app</div>
       <div class="flex flex-row items-center gap-3 justify-center">
         <a href="https://vitejs.dev/" target="_blank" rel="noopener noreferrer">
-          <img src="${c}" alt="Vite Logo" class="h-8 w-auto" />
+          <img src="${d}" alt="Vite Logo" class="h-8 w-auto" />
         </a>
         <a href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer">
           <img src="${f}" alt="Tailwind CSS Logo" class="h-8 w-auto" />
@@ -13,7 +13,7 @@
         </a>
       </div>
     </div>
-  `}function g(){return`
+  `}function v(){return`
     <div class="filter-container mb-6 py-6">
     <div class = "text-cardiff-dark">
     <p>Select Starting Letter to Filter By</p>
@@ -50,11 +50,11 @@
       <button id="filterButton">Filter</button>
       </div>
     </div>
-  `}function v(){return`
+  `}function g(){return`
     <div class="filter-container mb-6">
       <button id="backButton">Back</button>
     </div>
-  `}function d(i){return`
+  `}function c(i){return`
     <div class="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-2">
       ${i.map((t,n)=>{const o=`dialog-${n}`;return`
         <div class="bg-cardiff-red rounded-lg shadow p-6 flex flex-col">
@@ -82,7 +82,7 @@
                               <div class="mt-2">
                                 <h3 class="font-semibold text-cardiff-dark mb-1">Events:</h3>
                                 <ul class="list-disc list-inside text-sm">
-                                  ${t.programs.map(e=>e&&e.title?`<li><span class="font-semibold">${e.title}</span>${e.start_time?` <span class='text-xs text-cardiff-red'>(${new Date(e.start_time).toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"})}${e.end_time?" - "+new Date(e.end_time).toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"}):""})</span>`:""}${e.room?`, <span class='text-xs'>${e.room}</span>`:""}</li>`:"").join("")}
+                                  ${t.programs.map(e=>e&&e.title?`<li><span class="font-semibold">${e.title}</span>${e.start_time?` <span class='text-xs text-cardiff-red'>(${new Date(e.start_time).toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"})}${e.end_time?" - "+new Date(e.end_time).toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"}):""})</span>`:""}${e.room?`, <span class='text-xs'>${e.room}</span>`:""}${e.location.title?`, <span class='text-xs'>${e.location.title}</span>`:""}${e.location.address?`, <span class='text-xs'>${e.location.address}</span>`:""}${e.location.postcode?`, <span class='text-xs'>${e.location.postcode}</span>`:""}</li>`:"").join("")}
                                 </ul>
                               </div>
                             `:""}
@@ -120,9 +120,9 @@
         </div>
       </div>
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-       ${g()}
+       ${v()}
        </div>
-      ${d(i.topics)}
+      ${c(i.topics)}
     </div>
    
   `,document.getElementById("filterButton")?.addEventListener("click",()=>{const n=document.getElementById("mySelect").value,o=u(i,n);b({topics:o})})}function b(i){const t=document.querySelector("#app");if(!i||!i.topics||i.topics.length===0){alert("No open day data matching your criteria found");return}t.innerHTML=`
@@ -143,8 +143,8 @@
         </div>
       </div>
         <div class="flex flex-col sm:flex-row items-center justify-left gap-4 py-6 mb-6">
-       ${v()}
+       ${g()}
        </div>
-      ${d(i.topics)}
+      ${c(i.topics)}
     </div>
   `,document.getElementById("backButton")?.addEventListener("click",()=>{window.location.reload()})}m().then(x);
