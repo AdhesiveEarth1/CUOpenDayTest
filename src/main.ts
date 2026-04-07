@@ -128,7 +128,7 @@ function renderTopics(topics: any) {
                               <div class="mt-2">
                                 <h3 class="font-semibold text-cardiff-dark mb-1">Events:</h3>
                                 <ul class="list-disc list-inside text-sm">
-                                  ${topic.programs.map((prog: any) => prog && prog.title ? `<li><span class="font-semibold">${prog.title}</span>${prog.start_time ? ` <span class='text-xs text-cardiff-red'>(${new Date(prog.start_time).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}${prog.end_time ? ' - ' + new Date(prog.end_time).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : ''})</span>` : ''}${prog.room ? `, <span class='text-xs'>${prog.room}</span>` : ''}</li>` : '').join('')}
+                                  ${topic.programs.map((prog: any) => prog && prog.title ? `<li><span class="font-semibold">${prog.title}</span>${prog.start_time ? ` <span class='text-xs text-cardiff-red'>(${new Date(prog.start_time).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}${prog.end_time ? ' - ' + new Date(prog.end_time).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : ''})</span>` : ''}${prog.room ? `, <span class='text-xs'>${prog.room}</span>` : ''}${prog.location.title ? `, <span class='text-xs'>${prog.location.title}</span>` : ''}${prog.location.address ? `, <span class='text-xs'>${prog.location.address}</span>` : ''}${prog.location.postcode ? `, <span class='text-xs'>${prog.location.postcode}</span>` : ''}</li>` : '').join('')}
                                 </ul>
                               </div>
                             ` : ''}
