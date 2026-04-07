@@ -49,15 +49,6 @@ h1 {
   /* text-align: center;*/
 }
 
-.customwidth{
-  max-width: 1280px;
-}
-
-.customcardwidth{
-  max-width: 426px;
-}
-
-
 .logo {
   height: 6em;
   /*padding: 1.5em;*/
@@ -91,7 +82,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: #f9f9f9;
 }
 button:focus,
 button:focus-visible {
